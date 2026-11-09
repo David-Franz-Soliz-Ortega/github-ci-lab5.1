@@ -82,6 +82,6 @@ describe('CRUD /movies', () => {
     expect(deleted.statusCode).toBe(204);
 
     const notFound = await request(app).delete('/movies/1');
-    expect(notFound.statusCode).toBe(404);
+    expect(notFound.statusCode).toBe(404); 
   });
 });
