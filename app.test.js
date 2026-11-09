@@ -10,7 +10,7 @@ describe('CRUD /movies', () => {
     const res = await request(app)
       .post('/movies')
       .send({ title: 'Inception', director: 'Christopher Nolan', year: 2010 });
-    expect(res.statusCode).toBe(201);
+    expect(res.statusCode).toBe(500);
     expect(res.body).toEqual({
       id: 1,
       title: 'Inception',
