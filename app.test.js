@@ -6,6 +6,12 @@ describe('CRUD /movies', () => {
     app.resetMovies();
   });
 
+  test('GET /health returns status ok', async () => {
+    const res = await request(app).get('/health');
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toEqual({ status: 'ok' });
+  });
+
   test('POST /movies creates a movie', async () => {
     const res = await request(app)
       .post('/movies')
@@ -82,6 +88,6 @@ describe('CRUD /movies', () => {
     expect(deleted.statusCode).toBe(204);
 
     const notFound = await request(app).delete('/movies/1');
-    expect(notFound.statusCode).toBe(404); 
+    expect(notFound.statusCode).toBe(404);
   });
 });

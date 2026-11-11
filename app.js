@@ -6,6 +6,10 @@ app.use(express.json());
 let movies = [];
 let nextId = 1;
 
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 app.get('/movies', (req, res) => {
   res.status(200).json(movies);
 });
