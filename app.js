@@ -6,6 +6,10 @@ app.use(express.json());
 let movies = [];
 let nextId = 1;
 
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 app.get('/movies', (req, res) => {
   res.status(200).json(movies);
 });
@@ -40,11 +44,12 @@ app.put('/movies/:id', (req, res) => {
   }
   const { title, director, year } = req.body;
   if (!title) {
-    return res.status(400).json({ error: 'Title is required' });
+    //provocar error
+    return res.status(201).json({ error: 'Title is required' });
   }
   movie.title = title;
   if (director !== undefined) movie.director = director;
-  if (year !== undefined) movie.year = year;
+  if (year !== undefined) movie.year = año;
   res.status(200).json(movie);
 });
 
